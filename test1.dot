@@ -1,0 +1,50 @@
+
+digraph auth{
+
+  subgraph clusterauthorization_code_img{
+     node[style=filled,color =grey];
+     style=filled;
+     客户端1->授权认证服务器1[label="获取code",color =grey];
+     授权认证服务器1 -> 客户端1[color =grey,label="返回code"];
+     客户端1->授权认证服务器1[label="用code获取token",color =grey];
+     授权认证服务器1  -> 客户端1[color =grey,label="返回token"];
+  }
+
+  subgraph clusterpassword_img{
+     node[style=filled,color =khaki];
+     style=filled;
+     客户端2->授权认证服务器2[label="用户名,密码",color =khaki];
+     授权认证服务器2-> 客户端2[color =khaki,label="token"];
+  }
+  subgraph clusterclient_credentials_img{
+     node[style=filled,color =lime];
+     style=filled;
+     客户端3->授权认证服务器3[label="header加用户名密码",color =lime];
+     授权认证服务器3-> 客户端3[color =lime,label="token"];
+  }
+  subgraph clusterimplicit_img{
+     node[style=filled,color =cyan];
+     style=filled;
+     客户端4->授权认证服务器4[label="获取token",color =cyan];
+     授权认证服务器4-> 客户端4[color =cyan,label="token"];
+  }
+  {
+    node[style=filled,color =teal];
+    style=filled;
+    四种模式 ->implicit->客户端4;
+    四种模式 ->client_credentials->客户端3;
+    四种模式 ->password->客户端2;
+    四种模式 ->authorization_code->客户端1 ;
+  }
+  {
+      node[style=filled,color =yellow];
+      style=filled;
+      客户端 ->四种模式->业务服务器[label="token"];
+      客户端 ->refresh_token->业务服务器[label="token"];
+    }
+
+
+
+
+
+}

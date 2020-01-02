@@ -1,0 +1,24 @@
+digraph image{
+node[shape=record,height=.1]
+医生[label="<f0> 大医生|<f1> 小医生"];
+药[label="<f0> 正常的药|<f1> 项目的药"];
+项目[label="四期临床项目",style=filled,shape=oval ,color ="#FFBC7D"]
+新护士角色[style=filled,shape=oval ,color ="#FFBC7D"]
+
+机构->科室,医生
+医生 ->科室
+医生->患者
+患者-> 药
+科室->护士
+护士->患者
+机构->管理员
+
+//机构->项目[color ="#FFBC7D"]
+项目->医生,患者,药,新护士角色[color ="#FFBC7D"]
+管理员->项目[color ="#FFBC7D"]
+
+药:f1 ->新护士角色
+药:f0 ->护士
+
+
+}

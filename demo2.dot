@@ -1,0 +1,17 @@
+
+digraph image{
+  subgraph cluster_cd{
+      node[shape="box"]
+      edge [style="dashed"];
+      label="子图";
+      bgcolor="mintcream"
+      E->F->G;
+    }
+  B[label="B项目",color="green",style="filled",shape="diamond"]
+  A->B
+  B->C[label="成功",style="dashed"]
+  C->E
+  G->END
+  C->END
+  E->A[label="失败",style="dashed"]
+}

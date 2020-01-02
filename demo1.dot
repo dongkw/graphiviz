@@ -1,0 +1,10 @@
+
+digraph image{
+
+A[label="A项目"]
+
+A->B->C
+
+C->A
+
+}

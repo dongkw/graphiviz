@@ -1,0 +1,18 @@
+
+digraph image{
+
+node[shape=record]
+edge[arrowhead = "empty"]
+
+Car[label="{Car| {attr|{String color | Wheel wheel} }| run()}"]
+
+  subgraph clusterSub{
+    bgcolor=yellow
+    Bike[label="{Bike| |slow() }"]
+    Audi[label="{Audi| |fast() }"]
+  }
+
+  Bike -> Car
+  Audi ->Car
+
+}
