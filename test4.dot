@@ -1,0 +1,15 @@
+
+
+graph TD{
+
+  node[shape="box", style="filled"]
+  edge [style="dashed"];
+
+  C[label="Consistency 一致性",color="blueviolet"]
+  A[label="Availability 可用性",color="chartreuse"]
+  P[label="Partition tolerance 容错性",color="coral2"]
+
+  C--A[label="ACID",color="blueviolet"]
+  A--P[label="BASE",color="chartreuse"]
+  P--C[label="???",color="coral2"]
+}

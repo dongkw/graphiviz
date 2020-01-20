@@ -1,7 +1,7 @@
 
 digraph image{
   subgraph cluster_cd{
-      node[shape="box"]
+      node[shape="star"]
       edge [style="dashed"];
       label="子图";
       bgcolor="mintcream"

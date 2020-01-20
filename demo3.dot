@@ -12,7 +12,7 @@ Car[label="{Car| {attr|{String color | Wheel wheel} }| run()}"]
     Audi[label="{Audi| |fast() }"]
   }
 
+A[label="123|2345|{qqq|www}"]
   Bike -> Car
   Audi ->Car
-
 }

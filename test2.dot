@@ -1,5 +1,5 @@
 digraph image{
-node[shape=record,height=.1]
+node[shape=record,style=bold]
 医生[label="<f0> 大医生|<f1> 小医生"];
 药[label="<f0> 正常的药|<f1> 项目的药"];
 项目[label="四期临床项目",style=filled,shape=oval ,color ="#FFBC7D"]

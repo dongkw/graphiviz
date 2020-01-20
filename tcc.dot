@@ -1,0 +1,47 @@
+
+
+digraph TD{
+//     graph [splines="polyline"]
+
+  s0[label="主业务",style="filled",color="antiquewhite4",shape="star"]
+
+  subgraph cluster_s1{
+        node[shape="record"]
+        label="附属业务1";
+        bgcolor="deepskyblue"
+        s1[label="<f0>try|<f1>confirm|<f2>cancel"]
+
+  }
+  subgraph cluster_s2{
+        node[shape="record"]
+        label="附属业务2";
+        bgcolor="deepskyblue"
+        s2[label="<f0>try|<f1>confirm|<f2>cancel"]
+
+  }
+
+  subgraph cluster_tc{
+
+        node[shape="record"]
+        label="tc服务器";
+        bgcolor="mintcream"
+        tc[label="{<t0>业务1try结果|<t1>业务2try结果}"]
+        success[label="成功",style="filled",color="chartreuse",shape="diamond"]
+        fail[label="失败",style="filled",color="crimson",shape="diamond"]
+        tc->success[color="chartreuse"]
+        tc->fail[color="crimson"]
+
+  }
+
+  s0->s1:f0[color="antiquewhite4"]
+  s0->s2:f0[color="antiquewhite4"]
+  s0->tc[headport=n,color="antiquewhite4",style="dashed"]
+
+
+
+  success->s2:f1[color="chartreuse"]
+  success->s1:f1[color="chartreuse"]
+  fail->s2:f2[color="crimson"]
+  fail->s1:f2[color="crimson"]
+
+}

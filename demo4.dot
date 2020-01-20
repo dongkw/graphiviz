@@ -1,0 +1,45 @@
+digraph sequence{
+	graph [rankdir="LR";splines="polyline"]
+
+
+//    客户端-> gateway
+//    gateway ->auth[label="转发"];
+//    auth->客户端[label="返回token"]
+//    客户端 ->gateway[label="带token"]
+//    gateway ->业务服务
+
+    subgraph 客户端 {
+      graph [rank="same"]
+      node[shape="box";width=0;height=0;label=""]
+      edge[dir="none";style="dashed"]
+      客户端1[shape="plaintext";label="客户端"]
+      客户端4 [shape="point";width=0;height=0]
+
+       客户端1-> 客户端2->客户端3->客户端4
+    }
+
+    subgraph gateway {
+        graph [rank="same"]
+        node[shape="box";width=0;height=0;label=""]
+        edge[dir="none";style="dashed"]
+        gateway1[shape="plaintext";label="gateway"]
+        gateway4 [shape="point";width=0;height=0]
+        gateway1-> gateway2
+        gateway2->gateway3
+        gateway3->gateway4
+      }
+
+    subgraph 业务服务{
+          graph [rank="same"]
+          node[shape="box";width=0;height=0;label=""]
+          edge[dir="none";style="dashed"]
+          业务服务1[shape="plaintext";label="业务服务"]
+          业务服务4 [shape="point";width=0;height=0]
+          auth[shape="box"width=0.25;height=0.5;label="auth"]
+          业务服务1->auth->业务服务4
+    }
+
+      客户端2->gateway2[label="请求"]
+      gateway2->auth[label="转发"]
+      auth->gateway3->客户端3
+}

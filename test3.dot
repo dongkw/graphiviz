@@ -1,0 +1,41 @@
+
+
+digraph TD{
+
+has[label="new",shape="diamond"]
+delete1[label="delete"]
+plugins[label="add test method"]
+newTest->test
+
+controller->method
+controller->rest
+method->service
+method->request
+method->response
+
+addtestmethod-> rest
+addtestmethod-> controller
+test-> import
+test-> dependent
+test-> before
+test-> testmethod
+request->testmethod
+response->testmethod
+service->testmethod
+
+rest->get,post,patch,delete1
+get,post,patch,delete1->method
+plugins->has
+
+has->newTest[label="yes"]
+newTest->addtestmethod
+has->addtestmethod[label="no"]
+has->docs[label="frist"]
+
+enum1[label="enum"]
+basic[label="String、int、long、double、float、boolean、short、char"]
+request,response->random
+random->enum1,basic
+
+
+}

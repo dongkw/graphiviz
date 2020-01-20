@@ -1,0 +1,67 @@
+
+
+digraph TD{
+
+
+   graph [rankdir="LR";splines="polyline"]
+
+   	subgraph 协调者 {
+   		graph [rank="same"]
+   		node[shape="box";width=0.1;height=0.2;label=""]
+   		edge[dir="none";style="dashed"]
+
+   		c0[shape="plaintext";label="协调者"]
+   		c5 [shape="point";width=0;height=0]
+   		c6 [shape="point";width=0;height=0]
+   		c9 [shape="point";width=0;height=0]
+
+   		c0->c7->c8->c9->c1->c2->c6->c3->c4->c5
+   	}
+
+   	subgraph 参与者 {
+   		graph [rank="same"]
+   		node[shape="box";width=0.1;height=0.2;label=""]
+   		edge[dir="none";style="dashed"]
+
+   		p0[shape="plaintext";label="参与者..."]
+   		p5 [shape="point";width=0;height=0]
+   		p6 [shape="point";width=0;height=0]
+   		p9 [shape="point";width=0;height=0]
+
+   		p0->p7->p8->p9->p1->p2->p6->p3->p4->p5
+   	}
+   subgraph 一阶段{
+     graph [rank="same"]
+     edge[dir="none";style="dashed",size=0.0]
+     a0[shape="plaintext";label="一阶段"]
+     a1[shape="plaintext";label="二阶段"]
+     a2[shape="plaintext";label="三阶段"]
+
+      a0 -> c91 ->a1
+      a->a2
+
+   }
+
+   c91 [shape="point";width=0;height=0]
+   c92 [shape="point";width=0;height=0]
+   c91->c9[dir=none,style=bold]
+   c9->p9[dir=none,style=bold]
+   p9->c92[dir=none,style=bold]
+
+   c7->p7[label="是否可用"]
+   p8->c8[label="可用/不可用"]
+   c1->p1[label="是否要提交"]
+   p2->c2[label="提交/回滚（没有真的操作）"]
+   c3->p3[label="可以执行提交/回滚了"]
+   p4->c4[label="执行提交/回滚操作"]
+
+   a [shape="point";width=0;height=0]
+   b [shape="point";width=0;height=0]
+   a->c6[dir=none,style=bold]
+   c6->p6[dir=none,style=bold]
+   p6->b[dir=none,style=bold]
+
+
+
+
+}
